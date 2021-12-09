@@ -18,6 +18,7 @@ public class PreapprovalDetailsPage {
     public WebElement realtorNO;
 
     //REALTOR INFORMATION (NAME AND PHONE NUMBER OR EMAIL ADDRESS)
+    //THIS INPUT BOX IS NOT WORKING
     @FindBy(id = "realtorinfo")
     public WebElement realtorInformation;
 
