@@ -15,7 +15,7 @@ public class SignUpLinkPage {
     @FindBy(xpath = "//div/h4[@class='text-center mb-2']")
     public WebElement signUpTitleOfThePage;
 
-    public void setSignUpLinkClick(){
+    public void signUpLinkClick(){
         signUpLink.click();
     }
 
