@@ -6,9 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class LoginButtonPage {
+public class LoginButtonValidationPage {
 
-    public LoginButtonPage() { PageFactory.initElements(Driver.getDriver(),this); }
+    public LoginButtonValidationPage() { PageFactory.initElements(Driver.getDriver(),this); }
 
 
     @FindBy(id = "exampleInputEmail1")
@@ -31,9 +31,9 @@ public class LoginButtonPage {
     public WebElement verificationOfLogIn;
 
 
-    public void clickOnLoginButton(){
-        logInButton.click();
-    }
+//    public void clickOnLoginButton(){
+//        logInButton.click();
+//    }
 
     public void clickOnLoginArrow(){
         loginArrow.click();

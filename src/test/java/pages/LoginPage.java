@@ -20,5 +20,13 @@ public class LoginPage {
     @FindBy(name = "login")
     public WebElement loginButton;
 
+    @FindBy(className = "user-name")
+    public WebElement userNameOnDashboard;
+
+
+    public void clickOnLoginButton(){
+        loginButton.click();
+    }
+
 
 }
