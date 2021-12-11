@@ -39,10 +39,15 @@ public class LoginButtonValidationStepDefs {
  //   }
 
     //scenario #2
-    @When("I enter {string} and leave password field empty")
-    public void i_enter_and_leave_password_field_empty(String email) {
-        loginButtonPage.emailAddress.sendKeys("ditote3350@leanrights.com");
+    String givenEmailAddress;
+
+    @When("I enter {string} for email and leave password field empty")
+    public void i_enter_and_leave_password_field_empty(String emailAddress) throws InterruptedException {
+        givenEmailAddress = emailAddress;
+        loginButtonPage.emailAddress.sendKeys(emailAddress);
+        Thread.sleep(1000);
         loginButtonPage.password.sendKeys(Keys.TAB);
+        Thread.sleep(1000);
     }
 
     @Then("System should give pop-up error message on password field")
@@ -55,10 +60,15 @@ public class LoginButtonValidationStepDefs {
     }
 
     //scenario #3
-    @When("I leave email address field empty and enter only {string}")
-    public void i_leave_email_address_field_empty_and_enter_only(String password) {
+    String givenPassword;
+
+    @When("I leave email address field empty and enter only {string} for password")
+    public void i_leave_email_address_field_empty_and_enter_only(String password) throws InterruptedException {
+        givenPassword = password;
         loginButtonPage.emailAddress.sendKeys(Keys.TAB);
-        loginButtonPage.password.sendKeys("Janeray2021");
+        Thread.sleep(1000);
+        loginButtonPage.password.sendKeys(password);
+        Thread.sleep(1000);
     }
 
     @Then("System should give pop-up error message on email address field")
@@ -70,6 +80,13 @@ public class LoginButtonValidationStepDefs {
     }
 
     //scenario #4
+    @When("I enter following info for email and password")
+    public void i_enter_following_info_for_email_and_password(List<List<String>> data) {
+       loginButtonPage.emailAddress.sendKeys(data.get(0).get(0));
+       loginButtonPage.password.sendKeys(data.get(0).get(1));
+
+    }
+
     @Then("I click on Login Arrow on the right")
     public void i_click_on_login_arrow_on_the_right() {
         loginButtonPage.clickOnLoginArrow();
@@ -77,25 +94,25 @@ public class LoginButtonValidationStepDefs {
     }
 
     //scenario outline
-
-    @When("I enter for {string} and {string}")
-    public void i_enter_for_and(List<Map<String, String>> data) {
-
-        Map<String,String> map = data.get(0);
-        loginButtonPage.emailAddress.sendKeys(map.get("Email"));
-        loginButtonPage.password.sendKeys(map.get("password"));
-
-    }
-
-    @Then("The username should be {string}")
-    public void the_username_should_be(List<Map<String, String>> data) {
-
-        Map<String, String> expectedMap = data.get(0);
-
-        SoftAssertions softAssertions = new SoftAssertions();
-
-        softAssertions.assertThat(loginButtonPage.userNameOnDashboard.getText()).isEqualTo(expectedMap.get("Username"));
-    }
+//
+//    @When("I enter for {string} and {string}")
+//    public void i_enter_for_and(List<Map<String, String>> data) {
+//
+//        Map<String,String> map = data.get(0);
+//        loginButtonPage.emailAddress.sendKeys(map.get("Email"));
+//        loginButtonPage.password.sendKeys(map.get("password"));
+//
+//    }
+//
+//    @Then("The username should be {string}")
+//    public void the_username_should_be(List<Map<String, String>> data) {
+//
+//        Map<String, String> expectedMap = data.get(0);
+//
+//        SoftAssertions softAssertions = new SoftAssertions();
+//
+//        softAssertions.assertThat(loginButtonPage.userNameOnDashboard.getText()).isEqualTo(expectedMap.get("Username"));
+//    }
 
 
 
