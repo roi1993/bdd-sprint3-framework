@@ -17,10 +17,11 @@ public class LoginStepDefs {
         Driver.getDriver().get(ConfigReader.getProperty("url"));
     }
 
-    @When("I enter {string} and {string}")
-    public void i_enter_and(String email, String password) {
-        loginPage.email.sendKeys("ditote3350@leanrights.com");
-        loginPage.password.sendKeys("Janeray2021");
+    @When("I enter Email and password")
+    public void iEnterEmailAndPassword() {
+        loginPage.email.sendKeys(ConfigReader.getProperty("email"));
+        loginPage.password.sendKeys(ConfigReader.getProperty("password"));
+
     }
 
     @Then("I click on Login Button")
@@ -32,4 +33,6 @@ public class LoginStepDefs {
     public void i_should_land_on_my_duo_bank_dashboard() {
         Assert.assertTrue(Driver.getDriver().getPageSource().contains(loginPage.userNameOnDashboard.getText()));
     }
+
+
 }
