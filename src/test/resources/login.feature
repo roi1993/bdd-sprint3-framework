@@ -1,9 +1,13 @@
 
 Feature: As a registered user, I should be able to log into my DuoBank Dashboard
+
+  Background:
+    Given I am on main Login page
+
   @smoke
   Scenario: Log in to my DuoBank Dashboard
 
-    Given I am on main Login page
+ #   Given I am on main Login page
     When I enter "ditote3350@leanrights.com" and "Janeray2021"
     Then I click on Login Button
     Then I should land on my DuoBank Dashboard
@@ -12,7 +16,7 @@ Feature: As a registered user, I should be able to log into my DuoBank Dashboard
   @regression
   Scenario Outline: Verify Username On the DashBoard
 
-    Given I am on main Login page
+  #  Given I am on main Login page
     When I enter "<Email>" and "<password>"
     Then I click on Login Button
     Then I should land on my DuoBank Dashboard

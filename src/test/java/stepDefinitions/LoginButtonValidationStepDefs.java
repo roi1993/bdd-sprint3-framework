@@ -93,26 +93,7 @@ public class LoginButtonValidationStepDefs {
 
     }
 
-    //scenario outline
-//
-//    @When("I enter for {string} and {string}")
-//    public void i_enter_for_and(List<Map<String, String>> data) {
-//
-//        Map<String,String> map = data.get(0);
-//        loginButtonPage.emailAddress.sendKeys(map.get("Email"));
-//        loginButtonPage.password.sendKeys(map.get("password"));
-//
-//    }
-//
-//    @Then("The username should be {string}")
-//    public void the_username_should_be(List<Map<String, String>> data) {
-//
-//        Map<String, String> expectedMap = data.get(0);
-//
-//        SoftAssertions softAssertions = new SoftAssertions();
-//
-//        softAssertions.assertThat(loginButtonPage.userNameOnDashboard.getText()).isEqualTo(expectedMap.get("Username"));
-//    }
+
 
 
 

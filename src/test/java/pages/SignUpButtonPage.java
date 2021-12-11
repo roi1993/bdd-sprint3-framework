@@ -24,11 +24,19 @@ public class SignUpButtonPage {
     @FindBy(name = "register")
     public WebElement signUpButton;
 
+    @FindBy(xpath = "//div//span[@id='emailerror']")
+    public WebElement emailAddressLineErrorMsg;
+
     @FindBy(xpath = "//button/i[@class='bx bx-right-arrow-alt']")
     public WebElement signUpArrow;
 
     @FindBy(xpath = "//div/h4[text()='Welcome Back, Automation Testers!']")
     public WebElement backToLogInPage;
+
+
+    public void clickOnSignUpButton(){
+        signUpButton.click();
+    }
 
 
 
