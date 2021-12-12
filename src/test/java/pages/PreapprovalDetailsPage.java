@@ -14,8 +14,9 @@ public class PreapprovalDetailsPage {
     //ARE YOU WORKING WITH A REALTOR?(yes/no)
     @FindBy(xpath = "//label[@for='realtor1']")
     public WebElement realtorYES;
-    @FindBy(xpath = "//label[@for='realtor2']")
+    @FindBy(xpath = "//*[@id=\"steps-uid-0-p-0\"]/div[1]/div[3]/div/ul/li[2]/fieldset/div/label")
     public WebElement realtorNO;
+
 
     //REALTOR INFORMATION (NAME AND PHONE NUMBER OR EMAIL ADDRESS)
 

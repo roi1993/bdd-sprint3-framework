@@ -10,6 +10,10 @@ public class HomePage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(linkText = "Mortgage Application")
+//    @FindBy(linkText = "Mortgage Application")
+//    public WebElement mortgageApplicationButton;
+//}
+    @FindBy(xpath = "//span[@class='menu-item']")
     public WebElement mortgageApplicationButton;
 }
+
