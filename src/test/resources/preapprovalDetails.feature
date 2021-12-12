@@ -1,5 +1,5 @@
 
-@K
+@regression
 Feature: As a user, I should be able to land on Mortgage Application form, so that i can fill out the form.
   Background:
     Given I am on main Login page
@@ -22,6 +22,8 @@ Feature: As a user, I should be able to land on Mortgage Application form, so th
 
       And I click on next button
       And I should land on personal information part of application
+
+
     Examples:
       | est price | percentage | down amount | loan amount  |
       |360000     | 2          |7200         |352800 $      |
