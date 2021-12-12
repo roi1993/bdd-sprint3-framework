@@ -105,6 +105,7 @@ public class PersonalInformationPage {
     @FindBy(id = "c_home")
     public WebElement cHomePhone;
 
-    @FindBy(className = "btn btn-light-primary")
+ //   @FindBy(className = "btn btn-light-primary")  --  this will throw error again, so changed
+    @FindBy(xpath = "//li//a[text()='Next']")
     public WebElement nextButton;
 }
