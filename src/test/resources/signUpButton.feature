@@ -40,6 +40,7 @@ Feature: As a non-registered user, I should be able to register to the website
     Then  I should get error message on First Name Field
 
 
+
   Scenario:
     When I enter following information on required field on sign up
       | FIRST NAME | LAST NAME | EMAIL                 | PASSWORD |
@@ -70,6 +71,13 @@ Feature: As a non-registered user, I should be able to register to the website
       | Kelbee     | Barz      | kbarz38@instagram.com        | nZbVAu       |
       | Matthus    | Boldra    | mboldra39@hibu.com           | QRmoV3M      |
       | Merell     | Lohmeyer  | mlohmeyer3a@dropbox.com      | Ts2iJiEc     |
+
+
+  Scenario: Sign up to the website using Excel File
+
+    When I enter information from Excel File named "TestDataforSignUpFeature.xlsx" for required fields
+    And  I click on Sign Up Button
+    Then I should get Registration Successful Message on sign up page
 
 
 

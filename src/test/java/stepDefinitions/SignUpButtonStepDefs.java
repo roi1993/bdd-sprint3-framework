@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import pages.SignUpButtonPage;
 import utilities.Driver;
+import utilities.ExcelUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -97,6 +98,48 @@ public class SignUpButtonStepDefs {
     public void i_should_get_registration_successful_message_on_sign_up_page() {
         Assert.assertTrue(Driver.getDriver().getPageSource().contains("Registration Successfull"));
     }
+
+    @When("I enter information from Excel File named {string} for required fields")
+    public void i_enter_information_from_excel_file_named_for_required_fields(String path) throws Throwable {
+
+        ExcelUtils excelUtils = new ExcelUtils(path,"Data1");
+
+        List<Map<String, String>> dataAsMap = excelUtils.getDataAsMap();
+        Throwable exception = null;
+
+        for (int i = 0; i < dataAsMap.size(); i++) {
+            Map<String, String> row = dataAsMap.get(i);
+
+            if(row.get("Execute").equalsIgnoreCase("test")){
+                //need to fix it, grabbing all column together
+                //need to check assertion, everything passingg???
+
+              try {
+                  signUpButtonPage.firstName.sendKeys(row.get("First_name"), Keys.TAB);
+                  signUpButtonPage.lastName.sendKeys(row.get("Last_name"), Keys.TAB);
+                  signUpButtonPage.emailAddress.sendKeys(row.get("Email"), Keys.TAB);
+                  signUpButtonPage.password.sendKeys(row.get("Password"), Keys.TAB);
+
+                  excelUtils.setCellData("PASSED", "Status", i + 1);
+
+              }catch(Throwable e){
+                  exception = e;
+                  excelUtils.setCellData("FAILED","Status",i+1);
+
+              }
+
+            }else{
+                excelUtils.setCellData("SKIPPED","Status",i+1);
+
+            }
+
+        }
+        throw exception;
+
+
+    }
+
+
 
 
 
