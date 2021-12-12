@@ -7,9 +7,7 @@ import utilities.Driver;
 
 public class PreapprovalDetailsPage {
 
-    public PreapprovalDetailsPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
-    }
+    public PreapprovalDetailsPage(){ PageFactory.initElements(Driver.getDriver(),this); }
 
     //ARE YOU WORKING WITH A REALTOR?(yes/no)
     @FindBy(xpath = "//label[@for='realtor1']")
@@ -50,6 +48,7 @@ public class PreapprovalDetailsPage {
     public WebElement sourceOfDownPayment;
 
     //NEXT BUTTON
-    @FindBy(className = "btn btn-light-primary")
+    @FindBy(xpath = "//li//a[text()='Next']")
+ //   @FindBy(className = "btn btn-light-primary")
     public WebElement nextButton;
 }
