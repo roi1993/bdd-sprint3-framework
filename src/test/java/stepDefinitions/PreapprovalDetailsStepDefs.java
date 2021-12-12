@@ -6,7 +6,7 @@ import pages.PreapprovalDetailsPage;
 
 public class PreapprovalDetailsStepDefs {
 
-   PreapprovalDetailsPage preapprovalDetailsPage=new PreapprovalDetailsPage();
+    PreapprovalDetailsPage preapprovalDetailsPage = new PreapprovalDetailsPage();
 
     @Then("I choose YES for working with realtor")
     public void i_choose_yes_for_working_with_realtor() {
