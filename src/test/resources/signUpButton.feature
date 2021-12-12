@@ -41,14 +41,19 @@ Feature: As a non-registered user, I should be able to register to the website
 
 
   Scenario:
+    When I enter following information on required field on sign up
+      | FIRST NAME | LAST NAME | EMAIL                 | PASSWORD |
+      | Holmes     | Hulme     | hhulme2y@e-recht24.de | t22UNy3  |
 
+    And  I click on Sign Up Arrow on the right
+    Then I should get Registration Successful Message on sign up page
 
 
   Scenario Outline:
 
     When I enter following information on required field on sign up
-      | FIRST NAME | LAST NAME | EMAIL                        | PASSWORD     |
-      |<FIRST NAME>|<LAST NAME>|<EMAIL>                       |<PASSWORD>    |
+      | FIRST NAME   | LAST NAME   | EMAIL   | PASSWORD   |
+      | <FIRST NAME> | <LAST NAME> | <EMAIL> | <PASSWORD> |
 
     And  I click on Sign Up Arrow on the right
     Then I should get Registration Successful Message on sign up page

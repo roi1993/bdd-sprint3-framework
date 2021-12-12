@@ -78,6 +78,26 @@ public class SignUpButtonStepDefs {
         Assert.assertEquals(expectedErrorMessage,actualErrorMessage);
     }
 
+    @When("I enter following information on required field on sign up")
+    public void i_enter_following_information_on_required_field_on_sign_up(List<Map<String,String>> data) {
+        Map<String, String> row = data.get(0);
+        signUpButtonPage.firstName.sendKeys(row.get("FIRST NAME"));
+        signUpButtonPage.lastName.sendKeys(row.get("LAST NAME"));
+        signUpButtonPage.emailAddress.sendKeys(row.get("EMAIL"));
+        signUpButtonPage.password.sendKeys(row.get("PASSWORD"));
+
+    }
+
+    @When("I click on Sign Up Arrow on the right")
+    public void i_click_on_sign_up_arrow_on_the_right() {
+       signUpButtonPage.signUpArrow.click();
+    }
+
+    @Then("I should get Registration Successful Message on sign up page")
+    public void i_should_get_registration_successful_message_on_sign_up_page() {
+        Assert.assertTrue(Driver.getDriver().getPageSource().contains("Registration Successfull"));
+    }
+
 
 
 }
