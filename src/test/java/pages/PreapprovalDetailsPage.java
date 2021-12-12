@@ -44,11 +44,14 @@ public class PreapprovalDetailsPage {
     public WebElement downPaymentPercent;
 
     //SOURCE OF DOWN PAYMENT (DOCUMENTATION THAT MAY BE REQUESTED)
-    @FindBy(id = "select2-src_down_payment-uh-container")
+    @FindBy(xpath = "select2-search select2-search--dropdown")
     public WebElement sourceOfDownPayment;
 
     //NEXT BUTTON
     @FindBy(xpath = "//li//a[text()='Next']")
  //   @FindBy(className = "btn btn-light-primary")
     public WebElement nextButton;
+
+    @FindBy(xpath = "//div[@class='loanamount']//span")
+    public WebElement loanAmount;
 }
