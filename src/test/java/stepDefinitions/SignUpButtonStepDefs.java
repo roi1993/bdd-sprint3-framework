@@ -115,7 +115,7 @@ public class SignUpButtonStepDefs {
                 //need to check assertion, everything passingg???
 
               try {
-                  signUpButtonPage.firstName.sendKeys(row.get("First_name"), Keys.TAB);
+                  signUpButtonPage.firstName.sendKeys(row.get("First_name"));
                   signUpButtonPage.lastName.sendKeys(row.get("Last_name"), Keys.TAB);
                   signUpButtonPage.emailAddress.sendKeys(row.get("Email"), Keys.TAB);
                   signUpButtonPage.password.sendKeys(row.get("Password"), Keys.TAB);
