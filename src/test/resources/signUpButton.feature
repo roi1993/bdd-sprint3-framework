@@ -72,12 +72,6 @@ Feature: As a non-registered user, I should be able to register to the website
       | Merell     | Lohmeyer  | mlohmeyer30a@dropbox.com      | Ts2iJiEc     |
 
 
-  Scenario: Sign up to the website using Excel File
-
-    When I enter information from Excel File named "TestDataforSignUpFeature.xlsx" for required fields
-    And  I click on Sign Up Button
-    Then I should get Registration Successful Message on sign up page
-
 
 
 

@@ -38,6 +38,15 @@
       Then I should land on my DuoBank Dashboard
 
 
+    @Z
+    Scenario: Sign up to the website using Excel File
+
+      When I enter information from Excel File named "TestDataforSignUpFeature.xlsx" for required fields
+      And  I click on Sign Up Button
+      Then I should get Registration Successful Message on sign up page
+
+
+
 
 
 
