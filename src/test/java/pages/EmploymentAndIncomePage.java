@@ -1,7 +1,14 @@
 package pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import utilities.Driver;
+
 public class EmploymentAndIncomePage{
 
-    public EmploymentAndIncomePage() {PageFactory.initElements(Driver.getDriver(),this); }
+    public EmploymentAndIncomePage() {
+        PageFactory.initElements(Driver.getDriver(),this); }
 
     @FindBy(xpath = "//label[@for='currentjob1']")
     public WebElement currentBoxcheckBox;
@@ -12,7 +19,7 @@ public class EmploymentAndIncomePage{
     @FindBy(xpath = "//input[@id='position1']")
     public WebElement position;
 
-    @Findby(xpath = "//input[@id='city']")
+    @FindBy(xpath = "//input[@id='city']")
     public WebElement city;
 
     @FindBy(xpath = "//select[@id='state1']")
@@ -36,7 +43,7 @@ public class EmploymentAndIncomePage{
     @FindBy(xpath = "//input[@id='monthlycommission']")
     public WebElement monthlyCommission;
 
-    @Findby(xpath = "//input[@id='monthlydividents']")
+    @FindBy(xpath = "//input[@id='monthlydividents']")
     public WebElement monthlyDividents;
 
     @FindBy(xpath = "//select[@id='incomesource1']")
@@ -60,5 +67,8 @@ public class EmploymentAndIncomePage{
     @FindBy(xpath = "//a[@href='#next']")
     public WebElement nextButton;
 
-    }
+    @FindBy(xpath = "//fieldset/h6[@class='pb-50'][text()='PreApproval Inquiry']")
+    public WebElement preApprovalPageTitle;
+
+
 }

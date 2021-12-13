@@ -63,6 +63,7 @@ public class PersonalInformationPage {
     @FindBy(xpath = "//label[@for='privacypolicy']")
     public WebElement privacyPolicy;
 
+
     //Co-Borrower's Information
 
     //FIRST NAME*
@@ -108,4 +109,8 @@ public class PersonalInformationPage {
  //   @FindBy(className = "btn btn-light-primary")  --  this will throw error again, so changed
     @FindBy(xpath = "//li//a[text()='Next']")
     public WebElement nextButton;
+
+    //nextPage Title
+    @FindBy(xpath = "//h6[@class='py-50'][text()='Current Monthly Housing Expenses']")
+    public WebElement expensesPageTitle;
 }
