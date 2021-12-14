@@ -113,4 +113,7 @@ public class PersonalInformationPage {
     //nextPage Title
     @FindBy(xpath = "//h6[@class='py-50'][text()='Current Monthly Housing Expenses']")
     public WebElement expensesPageTitle;
+
+    //Previous button
+
 }

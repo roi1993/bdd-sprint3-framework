@@ -1,4 +1,4 @@
-@K
+
 Feature: As a user, I should be able to land on Mortgage Application form, so that i can fill out the form.
 
   Background:
@@ -25,11 +25,10 @@ Feature: As a user, I should be able to land on Mortgage Application form, so th
     Then I click on next button
     And I should land on expenses form
 
-
+@K
   Scenario: Fill out Personal Information Form
-    Then I choose YES for applying with co-borrower
+    Then I choose NO for applying with co-borrower
     Then I enter information from Excel File named "Personal_info_data.xlsx" for borrower
-    Then I enter information from Excel File named "Personal_info_data2.xlsx" for co-borrower
     Then I click on next button
     And I should land on expenses form
 

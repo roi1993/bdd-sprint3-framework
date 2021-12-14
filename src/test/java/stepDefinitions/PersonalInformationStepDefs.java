@@ -30,9 +30,9 @@ public class PersonalInformationStepDefs {
         preapprovalDetailsPage.downPaymentPercent.sendKeys("4");
     }
 
-    @Then("I choose YES for applying with co-borrower")
+    @Then("I choose NO for applying with co-borrower")
     public void iChooseYESForApplyingWithCoBorrower() {
-        personalInformationPage.coBorrowerYES.click();
+        personalInformationPage.coBorrowerNO.click();
     }
 
     @Then("I enter information from Excel File named {string} for borrower")
@@ -41,44 +41,41 @@ public class PersonalInformationStepDefs {
         ExcelUtils excelUtils = new ExcelUtils(path,"data");
 
         List<Map<String, String>> dataAsMap = excelUtils.getDataAsMap();
-        Throwable exception = null;
+        Throwable ex = null;
 
         for (int i = 0; i < dataAsMap.size(); i++) {
             Map<String, String> row = dataAsMap.get(i);
 
             if(row.get("execute").equalsIgnoreCase("T")){
 
-
-
                 try {
                     personalInformationPage.bFirstName.sendKeys(row.get("bFirst_Name"));
-
-
-                    excelUtils.setCellData("PASSED", "status", i + 1);
+                    personalInformationPage.bMiddleName.sendKeys(row.get("bMiddle_Name"));
+                    personalInformationPage.bLastName.sendKeys(row.get("bLast_Name"));
+                    personalInformationPage.bEmail.sendKeys(row.get("email"));
+                    personalInformationPage.bSSN.sendKeys(row.get("SSN"));
+                    personalInformationPage.bCellPhone.sendKeys(row.get("bCell_Phone"));
+                    personalInformationPage.bHomePhone.sendKeys(row.get("bHome_Phone"));
 
                 }catch(Throwable e){
-                    exception = e;
-                    excelUtils.setCellData("FAILED","status",i+1);
-
+                    ex = e;
+                    excelUtils.setCellData("FAIL", "Status", i + 1);
                 }
 
+                Driver.getDriver().navigate().back();
+
             }else{
-                excelUtils.setCellData("SKIPPED","status",i+1);
-
+                excelUtils.setCellData("SKIPPED", "Status", i + 1);
             }
-            Thread.sleep(2000);
+
+
         }
-        throw exception;
 
-
+        throw ex;
 
     }
 
 
-    @Then("I enter information from Excel File named {string} for co-borrower")
-    public void iEnterInformationFromExcelFileNamedForCoBorrower(String arg0) {
-        personalInformationPage.nextButton.click();
-    }
 
     @And("I should land on expenses form")
     public void iShouldLandOnExpensesForm() {
@@ -87,22 +84,4 @@ public class PersonalInformationStepDefs {
         Assert.assertEquals(expected,actual);
     }
 
-    @Then("I choose NO for applying with co-borrower")
-    public void i_choose_no_for_applying_with_co_borrower() {
-     personalInformationPage.coBorrowerNO.click();
-
-    }
-
-    @Then("I enter following information")
-    public void i_enter_following_information(List<Map<String,String>>data) {
-        Map<String, String> row = data.get(0);
-        personalInformationPage.bFirstName.sendKeys(row.get("FirstName"));
-        personalInformationPage.bLastName.sendKeys(row.get("LastName"));
-        personalInformationPage.bEmail.sendKeys(row.get("Email"));
-        personalInformationPage.bDOB.sendKeys(row.get("DOB"));
-        personalInformationPage.bSSN.sendKeys(row.get("SSN"));
-//        Select dropDown = new Select(personalInformationPage.bMaritalStatus);
-//        dropDown.selectByVisibleText("Married");
-        personalInformationPage.bCellPhone.sendKeys(row.get("Cell Phone"));
-    }
 }

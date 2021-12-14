@@ -17,7 +17,8 @@ public class ExpensePage {
     public WebElement currentMonthlyHousingExpenses;
 
     //entry slot
-    @FindBy(xpath = "//div//input[@name='monthly_rental_payment']")
+    //@FindBy(xpath = "//div//input[@name='monthly_rental_payment']")
+    @FindBy(id = "monthlyrentalpayment")
     public WebElement monthlyRentalPayment;
 
     @FindBy(xpath = "//a[@href='#next']")
