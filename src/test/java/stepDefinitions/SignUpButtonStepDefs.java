@@ -5,6 +5,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import pages.SignUpButtonPage;
+import pages.SignUpLinkPage;
 import utilities.Driver;
 import utilities.ExcelUtils;
 
@@ -103,6 +104,7 @@ public class SignUpButtonStepDefs {
     public void i_enter_information_from_excel_file_named_for_required_fields(String path) throws Throwable {
 
         ExcelUtils excelUtils = new ExcelUtils(path,"Data1");
+        SignUpLinkPage signUpLinkPage = new SignUpLinkPage();
 
         List<Map<String, String>> dataAsMap = excelUtils.getDataAsMap();
         Throwable exception = null;
@@ -111,23 +113,24 @@ public class SignUpButtonStepDefs {
             Map<String, String> row = dataAsMap.get(i);
 
             if(row.get("Execute").equalsIgnoreCase("test")){
-                //need to fix it, grabbing all column together
-                //need to check assertion, everything passingg???
+              signUpLinkPage.signUpLinkClick();
 
               try {
                   signUpButtonPage.firstName.sendKeys(row.get("First_name"));
-                  signUpButtonPage.lastName.sendKeys(row.get("Last_name"), Keys.TAB);
-                  signUpButtonPage.emailAddress.sendKeys(row.get("Email"), Keys.TAB);
-                  signUpButtonPage.password.sendKeys(row.get("Password"), Keys.TAB);
+                  signUpButtonPage.lastName.sendKeys(row.get("Last_name"));
+                  signUpButtonPage.emailAddress.sendKeys(row.get("Email"));
+                  signUpButtonPage.password.sendKeys(row.get("Password"));
 
                   excelUtils.setCellData("PASSED", "Status", i + 1);
+
+
 
               }catch(Throwable e){
                   exception = e;
                   excelUtils.setCellData("FAILED","Status",i+1);
 
               }
-
+                Driver.getDriver().navigate().back();
             }else{
                 excelUtils.setCellData("SKIPPED","Status",i+1);
 

@@ -3,7 +3,10 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import pages.PersonalInformationPage;
 import pages.PreapprovalDetailsPage;
 import utilities.Driver;
@@ -82,5 +85,24 @@ public class PersonalInformationStepDefs {
         String expected="";
         String actual= Driver.getDriver().getTitle();
         Assert.assertEquals(expected,actual);
+    }
+
+    @Then("I choose NO for applying with co-borrower")
+    public void i_choose_no_for_applying_with_co_borrower() {
+     personalInformationPage.coBorrowerNO.click();
+
+    }
+
+    @Then("I enter following information")
+    public void i_enter_following_information(List<Map<String,String>>data) {
+        Map<String, String> row = data.get(0);
+        personalInformationPage.bFirstName.sendKeys(row.get("FirstName"));
+        personalInformationPage.bLastName.sendKeys(row.get("LastName"));
+        personalInformationPage.bEmail.sendKeys(row.get("Email"));
+        personalInformationPage.bDOB.sendKeys(row.get("DOB"));
+        personalInformationPage.bSSN.sendKeys(row.get("SSN"));
+//        Select dropDown = new Select(personalInformationPage.bMaritalStatus);
+//        dropDown.selectByVisibleText("Married");
+        personalInformationPage.bCellPhone.sendKeys(row.get("Cell Phone"));
     }
 }
