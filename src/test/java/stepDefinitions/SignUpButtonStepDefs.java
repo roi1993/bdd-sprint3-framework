@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import pages.SignUpButtonPage;
@@ -97,7 +98,11 @@ public class SignUpButtonStepDefs {
 
     @Then("I should get Registration Successful Message on sign up page")
     public void i_should_get_registration_successful_message_on_sign_up_page() {
-        Assert.assertTrue(Driver.getDriver().getPageSource().contains("Registration Successfull"));
+        SoftAssertions soft = new SoftAssertions();
+        String expected = "Registration Successfull";
+        String actual = signUpButtonPage.registrationSuccessTitle.getAttribute("validationMessage");
+        soft.assertThat(expected).isEqualTo(actual);
+       // Assert.assertTrue(Driver.getDriver().getPageSource().contains("Registration Successfull"));
     }
 
     @When("I enter information from Excel File named {string} for required fields")
@@ -107,7 +112,7 @@ public class SignUpButtonStepDefs {
         SignUpLinkPage signUpLinkPage = new SignUpLinkPage();
 
         List<Map<String, String>> dataAsMap = excelUtils.getDataAsMap();
-        Throwable exception = null;
+        Throwable ex = null;
 
         for (int i = 0; i < dataAsMap.size(); i++) {
             Map<String, String> row = dataAsMap.get(i);
@@ -126,7 +131,7 @@ public class SignUpButtonStepDefs {
 
 
               }catch(Throwable e){
-                  exception = e;
+                  ex = e;
                   excelUtils.setCellData("FAILED","Status",i+1);
 
               }
@@ -137,7 +142,7 @@ public class SignUpButtonStepDefs {
             }
 
         }
-        throw exception;
+        throw ex;
 
 
     }

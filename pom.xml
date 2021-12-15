@@ -83,7 +83,9 @@
 
                     <testFailureIgnore>true</testFailureIgnore>
                     <includes>
-                        <include>**/*CucumberRunner.java</include>-->
+                        <!--suppress UnresolvedMavenProperty -->
+                        <include>${runnerClass}</include>-->
+                      <!--  **/*CucumberRunner.java -->
 
                     </includes>
                 </configuration>

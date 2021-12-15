@@ -84,4 +84,20 @@ public class PersonalInformationStepDefs {
         Assert.assertEquals(expected,actual);
     }
 
+
+    @Then("I enter following information")
+    public void i_enter_following_information(List<Map<String,String>> data) {
+        Map<String, String> row = data.get(0);
+        personalInformationPage.bFirstName.sendKeys("FirstName");
+        personalInformationPage.bLastName.sendKeys("LastName");
+        personalInformationPage.bEmail.sendKeys("Email");
+        personalInformationPage.bDOB.sendKeys("DOB");
+        personalInformationPage.bSSN.sendKeys("SSN");
+        personalInformationPage.bCellPhone.sendKeys("Cell Phone");
+
+
+
+    }
+
+
 }

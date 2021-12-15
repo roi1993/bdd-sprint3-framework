@@ -33,6 +33,9 @@ public class SignUpButtonPage {
     @FindBy(xpath = "//div/h4[text()='Welcome Back, Automation Testers!']")
     public WebElement backToLogInPage;
 
+    @FindBy(xpath = "//div[@class='card-title']")
+    public WebElement registrationSuccessTitle;
+
 
     public void clickOnSignUpButton(){
         signUpButton.click();

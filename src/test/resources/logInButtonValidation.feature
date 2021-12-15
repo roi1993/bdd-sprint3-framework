@@ -38,7 +38,7 @@
       Then I should land on my DuoBank Dashboard
 
 
-    @Z
+
     Scenario: Sign up to the website using Excel File
 
       When I enter information from Excel File named "TestDataforSignUpFeature.xlsx" for required fields

@@ -1,4 +1,4 @@
-
+@regression
 Feature: As a user, I should be able to land on Mortgage Application form, so that i can fill out the form.
 
   Background:
