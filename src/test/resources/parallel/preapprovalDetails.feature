@@ -11,8 +11,8 @@ Feature: As a user, I should be able to land on Mortgage Application form, so th
       Then I choose YES for working with realtor
       And I pass realtor Name and Phone Number
 
-      |Name     |Phone num   |
-      |Stephen  |454-343-3443|
+      |Name     |Phone num    |
+      |Stephen  |454-343-3443 |
 
       Then I choose Yes for working with a loan officer
       Then I enter estimated purchase price "<est price>"
