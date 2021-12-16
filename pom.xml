@@ -81,6 +81,9 @@
                 <version>3.0.0-M5</version>
                 <configuration>
 
+                    <parallel>methods</parallel>
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
+
                     <testFailureIgnore>true</testFailureIgnore>
                     <includes>
                         <!--suppress UnresolvedMavenProperty -->
