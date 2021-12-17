@@ -88,7 +88,7 @@
                     <includes>
                         <!--suppress UnresolvedMavenProperty -->
                         <include>${runnerClass}</include>-->
-                      <!--  **/*CucumberRunner.java -->
+                     <!-- **/*CucumberRunner.java-->
 
                     </includes>
                 </configuration>

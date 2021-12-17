@@ -1,4 +1,4 @@
-
+@regression
 Feature: As a registered user, I should be able to log into my DuoBank Dashboard
 
   Background:

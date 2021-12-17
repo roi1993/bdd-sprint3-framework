@@ -51,6 +51,9 @@ public class PersonalInformationPage {
     @FindBy(id = "select2-b_marital-container")
     public WebElement bMaritalStatus;
 
+    @FindBy(id = "select2-b_marital-container")
+    public WebElement bMarried;
+
     //CELL PHONE*
     @FindBy(id = "b_cell")
     public WebElement bCellPhone;
