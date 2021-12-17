@@ -23,4 +23,11 @@ public class CreditReportStepDefs {
         String actual= Driver.getDriver().getTitle();
         Assert.assertEquals(expected,actual);
     }
+
+
+
+    @Then("I choose NO for order credit report")
+    public void iChooseNOForOrderCreditReport() {
+        creditReportPage.orderCreditReportNO.click();
+    }
 }
