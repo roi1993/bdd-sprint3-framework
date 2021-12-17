@@ -76,6 +76,7 @@ public class PreapprovalDetailsStepDefs {
 
     }
 
+
     //And I choose purpose of the loan
     //Then I provide source of down payment
 

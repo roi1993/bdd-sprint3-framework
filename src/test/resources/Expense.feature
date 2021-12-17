@@ -1,6 +1,6 @@
 
 @Zi
-Feature:
+Feature: Fill out Expenses page
 
   Background:
     Given I am on main Login page
@@ -23,8 +23,7 @@ Feature:
       | FirstName | LastName | Email                     | DOB      | SSN       | Cell Phone |
       | Jane      | Ray      | ditote3350@leanrights.com | 12131985 | 123456789 | 123456789  |
 
-And I choose marital status
-
+    And I choose marital status
     Then I click on next button
 
     Scenario: I fill in Expenses Form
