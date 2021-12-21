@@ -8,5 +8,7 @@ Feature: Sign Up feature involving DB layer
     When I sign up with following info
     |First Name|Last Name|Email                 |Password|
     |Fred      |Tomas    |ticevov482@videour.com|FreadT2021|
+
+
     Then I should land on home page
     And The database should also have correct record in it
