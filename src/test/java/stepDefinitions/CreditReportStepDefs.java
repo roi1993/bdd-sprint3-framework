@@ -3,11 +3,14 @@ package stepDefinitions;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import pages.CreditReportPage;
+import utilities.DBUtility;
 import utilities.Driver;
 
 public class CreditReportStepDefs {
 
     CreditReportPage creditReportPage= new CreditReportPage();
+
+
 
 
     @Then("I choose YES for order credit report")
