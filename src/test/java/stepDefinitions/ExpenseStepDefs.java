@@ -25,16 +25,16 @@ public class ExpenseStepDefs {
     PersonalInformationPage personalInformationPage=new PersonalInformationPage();
 
 
-    @Then("I enter following information")
-    public void iEnterFollowingInformation(List<List<String>> data) {
-      personalInformationPage.bFirstName.sendKeys(data.get(1).get(0));
-      personalInformationPage.bLastName.sendKeys(data.get(1).get(1));
-      personalInformationPage.bEmail.sendKeys(data.get(1).get(2));
-      personalInformationPage.bDOB.sendKeys(data.get(1).get(3));
-      personalInformationPage.bSSN.sendKeys(data.get(1).get(4));
-      personalInformationPage.bCellPhone.sendKeys(data.get(1).get(5));
-
-    }
+//    @Then("I enter following information")
+//    public void iEnterFollowingInformation(List<List<String>> data) {
+//      personalInformationPage.bFirstName.sendKeys(data.get(1).get(0));
+//      personalInformationPage.bLastName.sendKeys(data.get(1).get(1));
+//      personalInformationPage.bEmail.sendKeys(data.get(1).get(2));
+//      personalInformationPage.bDOB.sendKeys(data.get(1).get(3));
+//      personalInformationPage.bSSN.sendKeys(data.get(1).get(4));
+//      personalInformationPage.bCellPhone.sendKeys(data.get(1).get(5));
+//
+//    }
     @And("I choose marital status")
     public void iChooseMaritalStatus() {
 personalInformationPage.bMaritalStatus.sendKeys("Mer", Keys.ENTER);
@@ -52,6 +52,8 @@ personalInformationPage.bMaritalStatus.sendKeys("Mer", Keys.ENTER);
     public void i_enter_monthly_rental_payment() {
         //giving element not intractable exception
    //     SeleniumUtils.jsClick(expensePage.monthlyRentalPayment);
+        SeleniumUtils.hover(expensePage.monthlyRentalPayment);
+        SeleniumUtils.jsClick(expensePage.monthlyRentalPayment);
         expensePage.monthlyRentalPayment.sendKeys("2000");
     }
 
