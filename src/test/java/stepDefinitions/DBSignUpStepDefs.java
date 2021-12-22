@@ -7,41 +7,39 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.SignInLinkPage;
 import pages.SignUpButtonPage;
+import pages.SignUpLinkPage;
 import utilities.DBUtility;
 import utilities.Driver;
 
 import java.util.List;
 import java.util.Map;
 
-public class DBSignUp {
+public class DBSignUpStepDefs {
 
-    SignInLinkPage signInLinkPage=new SignInLinkPage();
+
+    SignUpLinkPage signUpLinkPage=new SignUpLinkPage();
     SignUpButtonPage signUpButtonPage=new SignUpButtonPage();
     Map<String,String > expectedMap;
 
     @Given("I am on Sign Up Page and I am connected to DB")
     public void iAmOnSignUpPageAndIAmConnectedToDB() {
-     signInLinkPage.clickOnSignInLink();
+     signUpLinkPage.signUpLinkClick();
      DBUtility.createConnection();
 
     }
 
 
     @When("I sign up with following info")
-    public void iSignUpWithFollowingInfo(List<Map<String,String >> dataTable) {
+    public void iSignUpWithFollowingInfo(List<Map<String,String >> dataTable) throws InterruptedException {
       expectedMap=dataTable.get(0);
 
         signUpButtonPage.firstName.sendKeys(expectedMap.get("First Name"));
         signUpButtonPage.lastName.sendKeys(expectedMap.get("Last Name"));
         signUpButtonPage.emailAddress.sendKeys(expectedMap.get("Email"));
         signUpButtonPage.password.sendKeys(expectedMap.get("Password"));
+
+        Thread.sleep(2000);
         signUpButtonPage.clickOnSignUpButton();
-
-    }
-
-    @Then("I should land on home page")
-    public void iShouldLandOnHomePage() {
-        Assert.assertTrue(Driver.getDriver().getTitle().contains("Loan Application"));
 
     }
 
@@ -52,8 +50,8 @@ public class DBSignUp {
         String expectedEmail= expectedMap.get("Email");
         String expectedPassword= expectedMap.get("Password");
 
-        String query="Select * from tbl_user where email='"+expectedFirstName+"'";
-        List<Map<String, Object>> queryResultListOfMaps = DBUtility.getQueryResultListOfMaps(query);
+        String queryEmail="Select * from tbl_user where email='"+expectedEmail+"'";
+        List<Map<String, Object>> queryResultListOfMaps = DBUtility.getQueryResultListOfMaps(queryEmail);
         Map<String ,Object>actualMap=queryResultListOfMaps.get(0);
 
         String actualFirstName=(String)(actualMap.get("first_name"));

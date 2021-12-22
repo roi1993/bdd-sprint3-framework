@@ -12,6 +12,8 @@ public class SignInLinkPage {
     @FindBy(xpath = "//a/small[text()='Sign in']")
     public WebElement signInBlueLink;
 
+
+
     public void clickOnSignInLink(){
         signInBlueLink.click();
     }
