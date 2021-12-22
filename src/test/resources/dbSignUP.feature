@@ -1,4 +1,4 @@
-@KDBTest
+@DB
 
 Feature: Sign Up feature involving DB layer
 
