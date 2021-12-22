@@ -11,6 +11,7 @@ import pages.SignUpLinkPage;
 import utilities.DBUtility;
 import utilities.Driver;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -44,7 +45,7 @@ public class DBSignUpStepDefs {
     }
 
     @And("The database should also have correct record in it")
-    public void theDatabaseShouldAlsoHaveCorrectRecordInIt() {
+    public void theDatabaseShouldAlsoHaveCorrectRecordInIt() throws SQLException {
         String expectedFirstName= expectedMap.get("First Name");
         String expectedLastName= expectedMap.get("Last Name");
         String expectedEmail= expectedMap.get("Email");
@@ -64,5 +65,11 @@ public class DBSignUpStepDefs {
         Assert.assertEquals(expectedEmail,actualEmail);
         Assert.assertEquals(expectedPassword,actualPassword);
 
+        DBUtility.updateQuery("delete from tbl_user where email='"+expectedEmail +"'");
+        DBUtility.close();
+
     }
+
+
+
 }

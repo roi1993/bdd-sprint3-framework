@@ -8,8 +8,14 @@ Background:
     Then I click on Sign Up Blue Link
     When I sign up with following info
     |First Name|Last Name|Email                 |Password|
-    |Fred      |Tomas    |tivNN823@videour.com|FreadT2021|
-
-
+    |Fred      |Tomas    |tivNN823@videour.com  |FreadT2021|
     Then I should land on Login main Page
     And The database should also have correct record in it
+
+
+
+
+
+
+
+
