@@ -20,7 +20,7 @@ public class LoginPage {
     @FindBy(name = "login")
     public WebElement loginButton;
 
-    @FindBy(className = "user-name")
+    @FindBy(xpath = "//div/span[@class='user-name']")
     public WebElement userNameOnDashboard;
 
 

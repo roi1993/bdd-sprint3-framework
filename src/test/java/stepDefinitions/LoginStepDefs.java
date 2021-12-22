@@ -15,9 +15,7 @@ public class LoginStepDefs {
     String givenPassword;
 
     @Given("I am on main Login page")
-    public void i_am_on_main_login_page() {
-        Driver.getDriver().get(ConfigReader.getProperty("url"));
-    }
+    public void i_am_on_main_login_page() { Driver.getDriver().get(ConfigReader.getProperty("url")); }
 
     @When("I enter {string} and {string}")
     public void i_enter_and(String email, String password) throws InterruptedException {
