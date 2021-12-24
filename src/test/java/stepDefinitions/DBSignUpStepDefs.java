@@ -26,14 +26,6 @@ public class DBSignUpStepDefs {
     SignUpButtonPage signUpButtonPage=new SignUpButtonPage();
     Map<String,String > expectedMap;
 
-    @Given("I am on Sign Up Page and I am connected to DB")
-    public void iAmOnSignUpPageAndIAmConnectedToDB() {
-     signUpLinkPage.signUpLinkClick();
-     DBUtility.createConnection();
-
-    }
-
-
     @When("I sign up with following info")
     public void iSignUpWithFollowingInfo(List<Map<String,String >> dataTable) throws InterruptedException {
       expectedMap=dataTable.get(0);

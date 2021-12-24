@@ -2,15 +2,13 @@
 
 Feature: Sign Up feature involving DB layer
 
-  #ackground:
-   # Given I am on main Login page
-
   Scenario: New user sign up
     Given I am on main Login page
+    And I am connected to the DB
     Then I click on Sign Up Blue Link
     When I sign up with following info
       | First Name | Last Name | Email               | Password   |
-      | Fred       | Tomas     | tivNO800j@videoiiur.com | FreadT2021 |
+      | Fred       | Tomas     | tyr@videoiiur.com | FreadT2021 |
     Then I should land on Login main Page
     And The database should also have correct record in it
 

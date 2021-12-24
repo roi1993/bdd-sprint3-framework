@@ -9,7 +9,7 @@ Feature: DB tbl_mortgage test
       | id                           |
       | realtor_status               |
       | realtor_info                 |
-      | Loan_officer_status          |
+      | loan_officer_status          |
       | purpose_loan                 |
       | est_purchase_price           |
       | down_payment                 |
@@ -40,7 +40,7 @@ Feature: DB tbl_mortgage test
       | c_home                       |
       | rent_own_status              |
       | monthly_rental_payment       |
-      | first_mortgage_total_payment |
+      | first_mortagage_total_payment |
       | employer_name                |
       | position                     |
       | city                         |
