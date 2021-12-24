@@ -51,7 +51,7 @@ public class PersonalInformationPage {
     @FindBy(id = "select2-b_marital-container")
     public WebElement bMaritalStatus;
 
-    @FindBy(id = "select2-b_marital-container")
+    @FindBy(xpath = "//input[@class='select2-search__field']")
     public WebElement bMarried;
 
     //CELL PHONE*

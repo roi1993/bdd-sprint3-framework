@@ -99,6 +99,7 @@ public class DBSignUpStepDefs {
         Map<String,String> expectedMap = data.get(0);
 
         String passwordAsMD5 = DigestUtils.md5Hex(expectedMap.get("Password"));
+        System.out.println(passwordAsMD5);
         String phone = "123";
         String image = "assets/images/profile-pics/head";
         String type = "2";

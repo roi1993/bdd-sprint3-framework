@@ -37,7 +37,8 @@ public class ExpenseStepDefs {
 //    }
     @And("I choose marital status")
     public void iChooseMaritalStatus() {
-personalInformationPage.bMaritalStatus.sendKeys("Mer", Keys.ENTER);
+personalInformationPage.bMaritalStatus.click();
+personalInformationPage.bMarried.sendKeys("Mer", Keys.ENTER);
 
     }
 
@@ -50,11 +51,8 @@ personalInformationPage.bMaritalStatus.sendKeys("Mer", Keys.ENTER);
 
     @Then("I enter monthly rental payment")
     public void i_enter_monthly_rental_payment() {
-        //giving element not intractable exception
-   //     SeleniumUtils.jsClick(expensePage.monthlyRentalPayment);
-        SeleniumUtils.hover(expensePage.monthlyRentalPayment);
-        SeleniumUtils.jsClick(expensePage.monthlyRentalPayment);
-        expensePage.monthlyRentalPayment.sendKeys("2000");
+
+        expensePage.monthlyRentalPayment.sendKeys("123222");
     }
 
     @Then("I should land on Employment and Income Page")
