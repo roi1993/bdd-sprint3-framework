@@ -28,24 +28,9 @@ public class DBConnectionStepDefs {
     public void iShouldSeeTheResultAs() {
 
 
-    }
-
-
-    List<String> actualColumnNames;
-    @When("I retrieve column name")
-    public void iRetrieveColumnName() {
-       actualColumnNames= DBUtility.getColumnNames("select * from tbl_user ;");
-
 
     }
 
 
-    @Then("It should be the following")
-    public void itShouldBeTheFollowing(List<String> expected) {
-        SoftAssertions softAssertions = new SoftAssertions();
-        softAssertions.assertThat(actualColumnNames).isEqualTo(expected);
-        DBUtility.close();
-        softAssertions.assertAll();
 
-    }
 }
