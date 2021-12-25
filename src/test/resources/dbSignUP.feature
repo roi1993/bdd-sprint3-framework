@@ -34,6 +34,10 @@ Feature: Sign Up feature involving DB layer
       Then I am on Login main Page
        And I should be able to log in with new credentials
 
+  Scenario: Check for duplicate values in the email column
+    Given I am connected to the DB
+    When I send a query to check for duplicate email
+    Then The returned result list should be empty
 
 
 
