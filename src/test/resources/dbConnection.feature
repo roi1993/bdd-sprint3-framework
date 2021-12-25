@@ -5,8 +5,8 @@ Feature: DB connection Test
     Given I am connected with the database
 
   Scenario: I want to test the database connection
-    When I run the select query
-    Then I should see the result as
+    Then I should be able to see message connection successful
+
 
 
 

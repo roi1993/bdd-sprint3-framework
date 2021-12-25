@@ -17,19 +17,14 @@ public class DBConnectionStepDefs {
         DBUtility.createConnection();
     }
 
+    @Then("I should be able to see message connection successful")
+    public void iShouldBeAbleToSeeMessageConnectionSuccessful() {
 
-    @When("I run the select query")
-    public void iRunTheSelectQuery() {
-        DBUtility.getQueryResultListOfMaps("Select * from tbl_user where email='tivNN823@videour.com';");
-
+        System.out.println("Connection Successful!");
     }
 
-    @Then("I should see the result as")
-    public void iShouldSeeTheResultAs() {
 
-
-
-    }
+//
 
 
 
