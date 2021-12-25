@@ -1,10 +1,10 @@
 @DB
 Feature: DB Test
 
-Scenario: Check for duplicate values in the username column
-Given I am connected to the DB
-When I send a query to check for duplicate email
-Then The returned result list should be empty
+  Scenario: Check for duplicate values in the username column
+    Given I am connected to the DB
+    When I send a query to check for duplicate email
+    Then The returned result list should be empty
 
 
 
@@ -12,3 +12,8 @@ Then The returned result list should be empty
     Given I am connected to the DB
     When I update the first_name column with a String with an invalid length of 101 , the update should truncate the length to 100
 
+
+  Scenario: Verify the unicode support for first_name column of the tbl_user table
+    Given I am connected to the DB
+    When I update the name column with a unicode chars, the update should be successful
+    Then The update should be also successful on the UI
