@@ -28,6 +28,13 @@ Feature: Sign Up feature involving DB layer
     And The database should also have the correct info without spaces
 
 
+     Scenario: Verify Email update in the DB
+      Given I am connected to the DB
+      When I update email "tom@gmail.com" email with to  "tom1@gmail.com"
+      Then I am on Login main Page
+       And I should be able to log in with new credentials
+
+
 
 
 

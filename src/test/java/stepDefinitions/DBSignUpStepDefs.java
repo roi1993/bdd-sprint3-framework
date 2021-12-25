@@ -26,6 +26,7 @@ public class DBSignUpStepDefs {
     SignUpButtonPage signUpButtonPage=new SignUpButtonPage();
     Map<String,String > expectedMap;
 
+    // Scenario: New user sign up
     @When("I sign up with following info")
     public void iSignUpWithFollowingInfo(List<Map<String,String >> dataTable) throws InterruptedException {
       expectedMap=dataTable.get(0);
@@ -80,7 +81,7 @@ public class DBSignUpStepDefs {
 
     }
 
-
+//New User Creation from DB to UI flow
     @Given("I am connected to the DB")
     public void iAmConnectedToTheDB() {
         DBUtility.createConnection();
@@ -127,6 +128,9 @@ public class DBSignUpStepDefs {
         DBUtility.close();
     }
 
+
+
+    //  Scenario: Test if input field leading and trailing spaces are truncated before committing data to the database
     @Given("I click on Sign Up Blue Link and I am connected to DB")
     public void iClickOnSignUpBlueLinkAndIAmConnectedToDB() {
         signUpLinkPage.signUpLinkClick();
@@ -180,4 +184,28 @@ public class DBSignUpStepDefs {
     }
 
 
+
+
+    //Scenario: Verify Email update in the DB
+    String updatedOne;
+    @When("I update email {string} email with to  {string}")
+    public void iUpdateEmailEmailWithTo(String email, String updatedEmail) throws SQLException {
+        updatedOne = updatedEmail;
+        DBUtility.updateQuery("update tbl_user set email='"+updatedEmail+"' where email='"+email+"'");
+
+    }
+
+    @And("I should be able to log in with new credentials")
+    public void iShouldBeAbleToLogInWithNewCredentials() {
+        LoginPage loginPage=new LoginPage();
+        loginPage.email.sendKeys(updatedOne);
+        loginPage.password.sendKeys("Tom");
+        loginPage.clickOnLoginButton();
+
+        String actual=Driver.getDriver().getTitle();
+        String expected="Loan Application";
+        Assert.assertEquals(expected,actual);
+
+
+    }
 }
