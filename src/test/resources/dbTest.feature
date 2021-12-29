@@ -10,7 +10,7 @@ Feature: DB Test
 
   Scenario: Verify the column length for first_name column of the tbl_user table
     Given I am connected to the DB
-    When I update the first_name column with a String with an invalid length of 101 , the update should truncate the length to 100
+    When I update the first_name column with a String with an invalid length of 101 , the update should truncate the length to 4
 
 
   Scenario: Verify the unicode support for first_name column of the tbl_user table
