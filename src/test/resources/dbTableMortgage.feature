@@ -77,3 +77,55 @@ Feature: DB tbl_mortgage test
       | loan_status                  |
       | user_id                      |
       | active                       |
+
+
+
+    Scenario: Verify if info appear in tbl_mortgage after filling out the full application for mortgage from UI side
+      Given I am connected to the DB
+      Given I am on Login main Page
+      When I enter Email and password
+      Then I click on Login Button
+      Then I click on Mortgage Application
+      And  I choose YES for working with realtor
+      Then I pass realtor information
+      Then I enter estimated purchase price
+      And I enter down payment percentage
+      And I click on next button
+      Then I enter borrowers information
+      And I click on next button
+      Then I enter monthly rental payment
+      And I click on next button
+      Then I enter employer name
+      And I enter gross monthly income
+      Then I click on next button
+      Then I click on next button
+      And I enter personal information
+      And I choose agree
+      And I click on next button
+      Then I click on save button
+      When I send query to check the information entered
+      Then I should be able to see my application on DB side
+
+
+
+  Scenario: Verify the number of applications on DB and UI
+        Given I am connected to the DB
+        Given  I am on Login main Page
+        When  I enter Email and password
+        And  I click on Login Button
+        Then  I go to Application List page on the website
+        Then  The number of applications on UI should match the number of applications on DB
+
+
+   Scenario: Change the borrower's Last Name on DB and verify if it matches with UI
+        Given I am connected to the DB
+        Given  I am on Login main Page
+        When  I enter Email and password
+        And  I click on Login Button
+        Then  I go to Application List page on the website
+        Then   I change b_lastName to "Luther" on DB on the first row and It should reflect on UI side
+
+
+
+
+

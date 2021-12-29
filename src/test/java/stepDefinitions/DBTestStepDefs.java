@@ -32,7 +32,7 @@ public class DBTestStepDefs {
 
     //  Scenario: Verify the column length for first_name column of the tbl_user table
     @When("I update the first_name column with a String with an invalid length of {int} , the update should truncate the length to {int}")
-    public void iUpdateTheFirst_nameColumnWithAStringWithAnInvalidLengthOfTheUpdateShouldTruncateTheLengthTo(int length, int truncated) throws SQLException {
+    public void iUpdateTheFirst_nameColumnWithAStringWithAnInvalidLengthOfTheUpdateShouldTruncateTheLengthTo(Integer length, Integer truncated) throws SQLException {
         String str = "";
         for (int i = 0; i < length; i++) {
             char ch =  (char)('a' + (int)(Math.random()*102));
@@ -46,10 +46,10 @@ public class DBTestStepDefs {
         }
 
 
-        List<List<Object>> queryResultAsListOfLists = DBUtility.getQueryResultAsListOfLists("select first_name from tbl_user where id=1");
-        Integer actualLength = ((String)(queryResultAsListOfLists.get(2).get(0))).length();
+        List<List<Object>> queryResultAsListOfLists = DBUtility.getQueryResultAsListOfLists("select first_name from tbl_user where id=3324");
+        Integer actualLength = ((String)(queryResultAsListOfLists.get(0).get(0))).length();
 
-        Assert.assertEquals(java.util.Optional.of(truncated), actualLength);
+        Assert.assertEquals(truncated, actualLength);
 
 
     }
