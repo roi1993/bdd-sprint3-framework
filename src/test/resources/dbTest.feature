@@ -16,4 +16,3 @@ Feature: DB Test
   Scenario: Verify the unicode support for first_name column of the tbl_user table
     Given I am connected to the DB
     When I update the name column with a unicode chars, the update should be successful
-    Then The update should be also successful on the UI
