@@ -17,5 +17,5 @@ public class FinalTablePage {
     public WebElement applicationListPageTab;
 
     @FindBy(tagName = "table")
-    public List<WebElement> finalTable;
+    public WebElement finalTable;
 }

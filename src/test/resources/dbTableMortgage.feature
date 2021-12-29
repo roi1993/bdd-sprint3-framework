@@ -108,13 +108,22 @@ Feature: DB tbl_mortgage test
 
 
 
-      Scenario: Verify the number of application on DB and UI
+      Scenario: Verify the number of applications on DB and UI
         Given I am connected to the DB
         Given  I am on Login main Page
         When  I enter Email and password
         And  I click on Login Button
         Then  I go to Application List page on the website
         Then  The number of applications on UI should match the number of applications on DB
+
+
+      Scenario: Change the borrower's Last Name on DB and verify if it matches with UI
+        Given I am connected to the DB
+        Given  I am on Login main Page
+        When  I enter Email and password
+        And  I click on Login Button
+        Then  I go to Application List page on the website
+        Then   I change b_lastName to "Luther" on DB on the first row and It should reflect on UI side
 
 
 
