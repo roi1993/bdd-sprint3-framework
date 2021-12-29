@@ -78,7 +78,7 @@ public class DBTableMortgageStepDefs {
     List<Map<String, Object>> queryOfMaps;
     @When("I change b_lastName to {string} on DB on the first row and It should reflect on UI side")
     public void iChangeB_lastNameToOnDBonTheFirstRowAndItShouldReflectOnUISide(String lastName) {
-         queryOfMaps = DBUtility.getQueryResultListOfMaps("update tbl_mortagage set b_lastName='"+ lastName +"' where id = 33483");
+         queryOfMaps = DBUtility.getQueryResultListOfMaps("update tbl_mortagage set b_lastName='"+lastName+"' where id=33483");
 
          List<WebElement>totalRows = finalTablePage.finalTable.findElements(By.tagName("tr"));
         String actual = totalRows.get(1).getText().substring(0,4);
