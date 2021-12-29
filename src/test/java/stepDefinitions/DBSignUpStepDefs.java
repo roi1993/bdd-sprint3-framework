@@ -178,7 +178,7 @@ public class DBSignUpStepDefs {
         softAssertions.assertThat(lastName1.trim()).isEqualTo(actualLastName);
 
         softAssertions.assertAll();
-        DBUtility.updateQuery("delete from users where email='"+email1.trim()+"'");
+        DBUtility.updateQuery("delete from tbl_user where email='"+email1.trim()+"'");
         DBUtility.close();
 
     }
