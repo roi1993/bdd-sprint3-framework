@@ -75,6 +75,14 @@
             <version>8.0.27</version>
         </dependency>
 
+        <!-- API-->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>4.4.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 
