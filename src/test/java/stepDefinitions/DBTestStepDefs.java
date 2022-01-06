@@ -63,8 +63,8 @@ public class DBTestStepDefs {
     public void iUpdateTheNameColumnWithAUnicodeCharsTheUpdateShouldBeSuccessful() throws SQLException {
 
         expectedDB = "语言处理";
-        DBUtility.updateQuery("update tbl_user set first_name='"+expectedDB+"' where first_name='Yo';");
-        String actual =  (String)(DBUtility.getQueryResultAsListOfLists("select first_name from tbl_user where first_name=Tom;").get(0).get(0));
+        DBUtility.updateQuery("update tbl_user set first_name='"+expectedDB+"' where first_name='Team';");
+        String actual =  (String)(DBUtility.getQueryResultAsListOfLists("select first_name from tbl_user where first_name='Team';").get(0).get(0));
         Assert.assertEquals(expectedDB, actual);
 
     }
