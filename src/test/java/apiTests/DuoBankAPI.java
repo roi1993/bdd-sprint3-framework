@@ -37,6 +37,7 @@ public class DuoBankAPI {
     }
 
 
+
     @Test
     public void testPostAPI__negativeSceanrioMissingBody(){
         baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
@@ -49,6 +50,8 @@ public class DuoBankAPI {
                 then().log().all().
                 statusCode(200).
                 body("status", equalTo(422));
+
+
 
 
     }
