@@ -8,13 +8,13 @@ import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
-public class DuoBankAPI {
+public class POSTRegisterAPI {
 
 
     int x = 100 + (int) (Math.random() * 900);
 
+    //POST REGISTER
     @Test
-
     public void testPostAPI__PositiveScenarioWithValidRequiredParameters() {
 
 
@@ -36,8 +36,7 @@ public class DuoBankAPI {
 
     }
 
-
-
+    //POST REGISTER
     @Test
     public void testPostAPI__negativeSceanrioMissingBody(){
         baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
@@ -52,12 +51,11 @@ public class DuoBankAPI {
                 body("status", equalTo(422));
 
 
-
-
     }
 
-    @Test
 
+    //POST REGISTER
+    @Test
     public void testPostAPI__NegativeScenarioWithValidRequiredParameters() {
 
 
