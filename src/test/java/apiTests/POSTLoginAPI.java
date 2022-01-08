@@ -36,7 +36,8 @@ public class POSTLoginAPI {
                 then().log().all().
                 assertThat().
                 statusCode(200).
-                body("status", equalTo(422));
+                body("status", equalTo(422)).
+                body("message",equalTo("Please Fill in all Required Fields!"));
 
     }
 
