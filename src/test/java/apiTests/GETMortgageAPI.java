@@ -49,6 +49,34 @@ public class GETMortgageAPI {
 
     }
 
+    @Test
+    public void testGETMortgageAPI_MissingAuthorizationToken(){
+        baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
+        JsonPath jsonPath = given().
+                header("Accept", "application/json").
+                body("{\n" +
+                        "  \"email\": \"ditote3350@leanrights.com\",\n" +
+                        "  \"password\": \"Janeray2021\"\n" +
+                        "}").
+                when().log().all().
+                post("/login.php").
+                then().log().all().
+                assertThat().
+                statusCode(200).
+                body("message", equalTo("You have successfully logged in.")).extract().jsonPath();
+
+        String token = jsonPath.getString("token");
+
+                given().
+                when().log().all().
+                get("/getmortagage.php").
+                then().log().all().
+                //assertThat().
+                        statusCode(200).
+                        body("message",equalTo("Unauthorized"));
+
+    }
+
 
     @Test
     public void testGETMortgageAPI_logInWithAdminAcct() {
