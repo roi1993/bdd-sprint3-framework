@@ -16,7 +16,7 @@ import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class MultiLayerTest {
+public class MultiLayerAPITest {
 
     String email = new Faker().internet().emailAddress();
     String password = "jasonMason1234#";
