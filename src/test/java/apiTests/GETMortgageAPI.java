@@ -1,11 +1,15 @@
 package apiTests;
 
+
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.ValidatableResponse;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
+
+import io.cucumber.gherkin.internal.com.eclipsesource.json.JsonObject;
+import org.junit.Test;
 
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
@@ -57,11 +61,25 @@ public class GETMortgageAPI {
                 body("{\n" +
                         "  \"email\": \"ditote3350@leanrights.com\",\n" +
                         "  \"password\": \"Janeray2021\"\n" +
+
+    String token;
+
+    @Test
+    //public void extractTokenForAuthentication() {
+        public void testGETAPI__PositiveScenario() {
+        baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
+         token=given().
+                header("Accept", "application/json").
+                body("{\n" +
+                        "  \"email\": \"duotechb5@gmail.com\",\n" +
+                        "  \"password\": \"duotechb5\"\n" +
+
                         "}").
                 when().log().all().
                 post("/login.php").
                 then().log().all().
                 assertThat().
+
                 statusCode(200).
                 body("message", equalTo("You have successfully logged in.")).extract().jsonPath();
 
@@ -83,11 +101,20 @@ public class GETMortgageAPI {
         baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
         JsonPath jsonPath = given().
                 header("Accept", "application/json").
+
+                statusCode(200).extract().asString();
+
+             token=token.substring(67,token.length()-2);
+
+        given().
+                header("Authorization",token).
+
                 body("{\n" +
                         "  \"email\": \"duotechb5@gmail.com\",\n" +
                         "  \"password\": \"duotechb5\"\n" +
                         "}").
                 when().log().all().
+
                 post("/login.php").
                 then().log().all().
                 assertThat().
@@ -109,6 +136,17 @@ public class GETMortgageAPI {
 
 
         Assert.assertEquals(295,mortagage_applications.size());
+
+                get("/getmortagage.php ").
+                then().log().all().
+                assertThat().
+                statusCode(200);
+
+
+
+
+
+
     }
 
 
