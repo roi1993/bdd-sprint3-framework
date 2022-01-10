@@ -83,6 +83,22 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Cucumber TestNG -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>7.0.0</version>
+        </dependency>
+
+
+        <!-- TestNG -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.0.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 

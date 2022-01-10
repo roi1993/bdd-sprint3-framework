@@ -20,7 +20,7 @@ public class GETMortgageAPI {
     String token;
 
     @Test
-    public void testGETMortgageAPI_logInWithUser() {
+    public void testGETMortgageAPIPositiveScenario_logInWithUser() {
         baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
         JsonPath jsonPath = given().
                 header("Accept", "application/json").
@@ -49,14 +49,14 @@ public class GETMortgageAPI {
         List<Object> mortagage_applications = jsonPath1.getList("mortagage_applications");
 
 
-        Assert.assertEquals(10,mortagage_applications.size());
+        Assert.assertEquals(11,mortagage_applications.size());
 
 
 
     }
 
     @Test
-    public void testGETMortgageAPI_MissingAuthorizationToken(){
+    public void testGETMortgageAPINegativeScenario_MissingAuthorizationToken(){
         baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
         JsonPath jsonPath = given().
                 header("Accept", "application/json").
@@ -85,7 +85,7 @@ public class GETMortgageAPI {
 
 
     @Test
-    public void testGETMortgageAPI_logInWithAdminAcct() {
+    public void testGETMortgageAPIPositiveScenario_logInWithAdminAcct() {
         baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
         JsonPath jsonPath = given().
                 body("{\n" +
@@ -117,6 +117,34 @@ public class GETMortgageAPI {
 
 
     }
+
+    }
+
+
+    @Test
+    public void testGETMortgageAPINegativeScenario_withMissingBodyAndHeader() {
+        baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
+        JsonPath jsonPath = given().
+                when().log().all().
+                post("/login.php").
+                then().log().all().
+                assertThat().
+                statusCode(200).
+                body("message", equalTo("Please Fill in all Required Fields!")).extract().jsonPath();
+
+        String token = jsonPath.getString("token");
+
+            given().
+                when().log().all().
+                get("/getmortagage.php").
+                then().log().all().
+                //assertThat().
+                        statusCode(200).
+                        body("message",equalTo("Unauthorized"));
+
+
+
+
 
 
 
