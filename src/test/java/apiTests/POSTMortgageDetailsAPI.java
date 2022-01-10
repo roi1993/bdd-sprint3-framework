@@ -56,7 +56,7 @@ public class POSTMortgageDetailsAPI{
 
 
     @Test
-    public void testMortgageDetailsAPI_User(){
+    public void testMortgageDetailsAPI_UserCredential(){
 
 
 int id=778;
