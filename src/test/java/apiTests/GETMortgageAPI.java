@@ -116,6 +116,7 @@ public class GETMortgageAPI {
         Assert.assertEquals(295,mortagage_applications.size());
 
 
+    }
 
     }
 
@@ -146,10 +147,6 @@ public class GETMortgageAPI {
 
 
 
-
-
-
-    }
 
 
 
