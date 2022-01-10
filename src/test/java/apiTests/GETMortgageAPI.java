@@ -118,7 +118,7 @@ public class GETMortgageAPI {
 
     }
 
-    }
+
 
 
     @Test
@@ -134,24 +134,16 @@ public class GETMortgageAPI {
 
         String token = jsonPath.getString("token");
 
-            given().
+        given().
                 when().log().all().
                 get("/getmortagage.php").
                 then().log().all().
                 //assertThat().
                         statusCode(200).
-                        body("message",equalTo("Unauthorized"));
+                body("message", equalTo("Unauthorized"));
 
 
-
-
-
-
-
-
-
-
-
+    }
 
 
 }
