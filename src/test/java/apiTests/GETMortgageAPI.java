@@ -17,6 +17,8 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class GETMortgageAPI {
 
+    String token;
+
     @Test
     public void testGETMortgageAPI_logInWithUser() {
         baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
@@ -61,7 +63,7 @@ public class GETMortgageAPI {
                 body("{\n" +
                         "  \"email\": \"ditote3350@leanrights.com\",\n" +
                         "  \"password\": \"Janeray2021\"\n" +
-                        "}").
+                     "}").
                 when().log().all().
                 post("/login.php").
                 then().log().all().
@@ -86,7 +88,6 @@ public class GETMortgageAPI {
     public void testGETMortgageAPI_logInWithAdminAcct() {
         baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
         JsonPath jsonPath = given().
-                header("Accept", "application/json").
                 body("{\n" +
                         "  \"email\": \"duotechb5@gmail.com\",\n" +
                         "  \"password\": \"duotechb5\"\n" +
