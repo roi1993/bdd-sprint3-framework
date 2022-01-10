@@ -40,6 +40,7 @@ public class EndToEndAPITest {
 
         //System.out.println(single_application);
 
+
         DBUtility.createConnection();
 //        DBUtility.updateQuery("INSERT INTO tbl_mortagage (id, realtor_status, realtor_info,loan_officer_status,purpose_loan,est_purchase_price,down_payment,down_payment_percent,total_loan_amount,src_down_payment,apply_co_borrower,b_firstName,b_lastName,b_email,b_dob,b_ssn,b_marital,b_cell,rent_own_status,monthly_rental_payment,employer_name,gross_monthly_income,eConsent_declarer_FirstName,eConsent_declarer_LastName,eConsent_declarer_Email,created_on,user_id,active \n" +
 //                "values ('"+single_application+"');");
