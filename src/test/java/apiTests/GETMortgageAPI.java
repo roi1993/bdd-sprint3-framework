@@ -112,7 +112,6 @@ public class GETMortgageAPI {
         List<Object> mortagage_applications = jsonPath1.getList("mortagage_applications");
 
 
-        Assert.assertEquals(295, mortagage_applications.size());
 
 
     }

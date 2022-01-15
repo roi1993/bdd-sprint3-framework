@@ -31,27 +31,26 @@ public class EndToEndAPITest {
         String randomEmail = new Faker().internet().emailAddress();
         String randomEmail2 = new Faker().internet().emailAddress();
         int user_id = 1000 + (int)(Math.random() * 9000);
-        Date dateAndTime = Calendar.getInstance().getTime();
-        String dateTime = dateAndTime.toString();
+        //Date dateAndTime = Calendar.getInstance().getTime();
+        //String dateTime = dateAndTime.toString();
 
         MortgageApplication single_application = new MortgageApplication(id,1,"James Bond", 1,"Purchase a Home", 100000000,250000,25,
                 750000,"Checking/Savings (most recent bank statement)",2,"Jennifer","Lopez",randomEmail,"12/31/1975","123456789","Married",
-                "123-456-7899","Rent",4500,"Barbara Lopez",100000,"Jennifer","Lopez",randomEmail,dateTime,user_id,1 );
+                "123-456-7899","Rent",4500,"Barbara Lopez",100000,"Jennifer","Lopez",randomEmail,"2021-08-30 00:24:29",user_id,1 );
 
         //System.out.println(single_application);
 
 
         DBUtility.createConnection();
-//        DBUtility.updateQuery("INSERT INTO tbl_mortagage (id, realtor_status, realtor_info,loan_officer_status,purpose_loan,est_purchase_price,down_payment,down_payment_percent,total_loan_amount,src_down_payment,apply_co_borrower,b_firstName,b_lastName,b_email,b_dob,b_ssn,b_marital,b_cell,rent_own_status,monthly_rental_payment,employer_name,gross_monthly_income,eConsent_declarer_FirstName,eConsent_declarer_LastName,eConsent_declarer_Email,created_on,user_id,active \n" +
-//                "values ('"+single_application+"');");
+//        DBUtility.updateQuery("INSERT INTO tbl_mortagage (id, realtor_status, realtor_info,loan_officer_status,purpose_loan,est_purchase_price,down_payment,down_payment_percent,total_loan_amount,src_down_payment,add_fund_available,apply_co_borrower,b_firstName,b_lastName,b_email,b_dob,b_ssn,b_marital,b_cell,rent_own_status,monthly_rental_payment,employer_name,gross_monthly_income,eConsent_declarer_FirstName,eConsent_declarer_LastName,eConsent_declarer_Email,created_on,user_id,active) values ('"+single_application+"');");
         DBUtility.updateQuery("INSERT INTO tbl_mortagage (id, realtor_status, realtor_info,loan_officer_status,purpose_loan,est_purchase_price," +
-                "down_payment,down_payment_percent,total_loan_amount,src_down_payment,apply_co_borrower,b_firstName,b_lastName," +
+                "down_payment,down_payment_percent,total_loan_amount,src_down_payment,add_fund_available,apply_co_borrower,b_firstName,b_middleName,b_lastName," +
                 "b_email,b_dob,b_ssn,b_marital,b_cell,rent_own_status,monthly_rental_payment,employer_name,gross_monthly_income," +
-                "eConsent_declarer_FirstName,eConsent_declarer_LastName,eConsent_declarer_Email,created_on,user_id,active" +
+                "eConsent_declarer_FirstName,eConsent_declarer_LastName,eConsent_declarer_Email,created_on,user_id,active)" +
                 "values ('"+id+"',1,'James Bond', 1,'Purchase a Home', 100000000,250000,25,750000," +
-                "'Checking/Savings (most recent bank statement)',2,'Jennifer','Lopez','"+randomEmail+"','12/31/1975'," +
+                "'Checking/Savings (most recent bank statement)',100000, 2,'Jennifer','M','Lopez','"+randomEmail+"','12/31/1975'," +
                 "123456789,'Married','123-456-7899','Rent',4500,'Barbara Lopez',100000,'Jennifer','Lopez','"+randomEmail+"'," +
-                "'"+dateTime+"',"+user_id+",1);");
+                "'2021-08-30 00:24:29',"+user_id+",1);");
 
         DBUtility.close();
 
@@ -72,20 +71,12 @@ public class EndToEndAPITest {
 
         String token = jsonPath.getString("token");
 
-        JsonPath jsonPath1 = given().
-                header("Authorization",token).
-                when().log().all().
-                get("/getmortagage.php").
-                then().log().all().
-                //assertThat().
-                        statusCode(200).
-                        body("success",equalTo(1)).extract().jsonPath();
 
 //        List<Object> mortagage_applications = jsonPath1.getList("mortagage_applications");
 //        List listofID = jsonPath1.get("mortagage_applications.id");
 //        id = listofID.get(6).toString();
 
-        JsonPath jsonPath2 = given().
+        JsonPath jsonPath1 = given().
                 header("Authorization",token).
                 body("{\n" +
                         " \"id\":\""+id+"\"\n" +
@@ -98,7 +89,7 @@ public class EndToEndAPITest {
                         body("success",equalTo(1)).extract().jsonPath();
 
 
-        Map<Object,String> single_applicationForgivenUser = jsonPath2.getMap("single_application");
+        Map<Object,String> single_applicationForgivenUser = jsonPath1.getMap("single_application");
 
         Assert.assertEquals(single_application.getRealtor_info(),single_applicationForgivenUser.get("realtor_info"));
         Assert.assertEquals(String.valueOf(single_application.getEst_purchase_price()),single_applicationForgivenUser.get("est_purchase_price"));
@@ -129,20 +120,14 @@ public class EndToEndAPITest {
 
         String token1 = jsonPath.getString("token");
 
-        JsonPath jsonPath4 = given().
-                header("Authorization",token1).
-                when().log().all().
-                get("/getmortagage.php").
-                then().log().all().
-                //assertThat().
-                        statusCode(200).
-                        body("success",equalTo(1)).extract().jsonPath();
+
+
 
 //        List<Object> mortagage_applications = jsonPath1.getList("mortagage_applications");
 //        List listofID = jsonPath1.get("mortagage_applications.id");
 //        id = listofID.get(6).toString();
 
-        JsonPath jsonPath5 = given().
+        JsonPath jsonPath4 = given().
                 header("Authorization",token1).
                 body("{\n" +
                         " \"id\":\""+id+"\"\n" +
@@ -155,7 +140,7 @@ public class EndToEndAPITest {
                         body("success",equalTo(1)).extract().jsonPath();
 
 
-        Map<Object,String> single_applicationForgivenUser1 = jsonPath2.getMap("single_application");
+        Map<Object,String> single_applicationForgivenUser1 = jsonPath4.getMap("single_application");
 
         Assert.assertEquals(single_application.getEmployer_name(),single_applicationForgivenUser1.get("employer_name"));
 
@@ -182,7 +167,7 @@ public class EndToEndAPITest {
 
 
     //verify change in API
-        JsonPath jsonPath6 = given().
+        JsonPath jsonPath5 = given().
                 header("Accept", "application/json").
                 body("{\n" +
                         "  \"email\": \"duotechb5@gmail.com\",\n" +
@@ -195,16 +180,8 @@ public class EndToEndAPITest {
                 statusCode(200).
                 body("message", equalTo("You have successfully logged in.")).extract().jsonPath();
 
-        String token2 = jsonPath.getString("token");
+        String token2 = jsonPath5.getString("token");
 
-        JsonPath jsonPath7= given().
-                header("Authorization",token2).
-                when().log().all().
-                get("/getmortagage.php").
-                then().log().all().
-                //assertThat().
-                        statusCode(200).
-                        body("success",equalTo(1)).extract().jsonPath();
 
         given().
                 header("Authorization",token2).

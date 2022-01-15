@@ -1,5 +1,6 @@
 package apiTests;
 
+import com.github.javafaker.Faker;
 import io.restassured.path.json.JsonPath;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,11 +14,13 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class POSTMortgageDetailsAPI{
 
+    String id;
+
     @Test
     public void testMortgageDetailsAPIPositiveScenario_returnSpecificMortgageAppDetailsForLoggedInUser(){
 
  
-        String id;
+       // String id;
 
         //int id = 661;
 
@@ -166,6 +169,45 @@ int id=778;
 
 
     }
+
+
+    @Test
+    public void testMortgageDetailsAPINegativeScenario_withInvalidTokenNum(){
+
+      String token = "ABdfkjhghsdhgshgdnmndkjhuidfghdfncgdshfjsfkxkvoisdjfdv%4734847Bhfesughnd";
+      int id = 556;
+
+        baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
+        JsonPath jsonPath = given().
+                header("Accept", "application/json").
+                body("{\n" +
+                        "  \"email\": \"duotechb5@gmail.com\",\n" +
+                        "  \"password\": \"duotechb5\"\n" +
+                        "}").
+                when().log().all().
+                post("/login.php").
+                then().log().all().
+                assertThat().
+                statusCode(200).
+                body("message", equalTo("You have successfully logged in.")).extract().jsonPath();
+
+       // String token = jsonPath.getString("token");
+
+        given().
+                header("Authorization",token).
+                body("{\n" +
+                        " \"id\":\""+id+"\"\n" +
+                        "}").
+                when().log().all().
+                post("/mortagagedetails.php").
+                then().log().all().
+                //assertThat().
+                        statusCode(200);
+
+
+
+    }
+
 
 
 
