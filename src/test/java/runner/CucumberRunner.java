@@ -9,11 +9,11 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-        tags = "@DB", //"@regression", //"@temp", //@second and @temp , @second or @temp, not @temp, @test or @temp and @second,  (@test or @temp) and @second
+        tags = "@API", //"@regression", //"@temp", //@second and @temp , @second or @temp, not @temp, @test or @temp and @second,  (@test or @temp) and @second
         features = "src/test/resources",  // the relative path of the folder where the feature files are located
         glue = "stepDefinitions" ,// the relative path of the folder where step definition methods are located
         stepNotifications = true  // shows the detailed step results
-       // ,dryRun = true   // dryRun scans the resources folder and generates step definition snippets
+        ,dryRun = true   // dryRun scans the resources folder and generates step definition snippets
 
         //       ,snippets = CucumberOptions.SnippetType.CAMELCASE  // generates Camel Case Style Snippets
         ,plugin = {
