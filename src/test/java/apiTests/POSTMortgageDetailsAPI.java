@@ -22,7 +22,7 @@ public class POSTMortgageDetailsAPI{
  
        // String id;
 
-      //  int id = 661;
+        //int id = 661;
 
         //String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2xvYW5cL2FwaSIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvbG9hblwvYXBpIiwiaWF0IjoxNjQxNzU2MjUyLCJleHAiOjE2NDE3NTk4NTIsImRhdGEiOnsidXNlcl9pZCI6IjM1NjgiLCJ0eXBlIjoiMSJ9fQ.fTaj5x1d0InRA1di6Pop8jj3T6J6tTDmt_ziruZj5Cc";
 
@@ -68,14 +68,8 @@ public class POSTMortgageDetailsAPI{
                         statusCode(200).
                         body("success",equalTo(1)).extract().jsonPath();
 
-//        List<Object> single_application = jsonPath1.getList("single_application");
-//        System.out.println(single_application);
-        Map<Object,String>  single_application = jsonPath2.getMap("single_application");
-
-        Assert.assertEquals("Seema Kuhic, hyman.dach@yahoo.com",single_application.get("realtor_info"));
-        Assert.assertEquals("812274",single_application.get("est_purchase_price"));
-        Assert.assertEquals("Kerstin",single_application.get("b_firstName"));
-        Assert.assertEquals("Haag",single_application.get("b_lastName"));
+        List<Object> single_application = jsonPath1.getList("single_application");
+        System.out.println(single_application);
 
 
 
@@ -87,7 +81,7 @@ public class POSTMortgageDetailsAPI{
     public void testMortgageDetailsAPI_UserCredential(){
 
 
-       int id=778;
+int id=778;
 
         baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
         JsonPath jsonPath = given().
@@ -118,6 +112,14 @@ public class POSTMortgageDetailsAPI{
                         body("success",equalTo(1)).extract().jsonPath();
 
 
+         Map<Object,String>  single_application = jsonPath1.getMap("single_application");
+
+        Assert.assertEquals("Seema Kuhic, hyman.dach@yahoo.com",single_application.get("realtor_info"));
+        Assert.assertEquals("812274",single_application.get("est_purchase_price"));
+        Assert.assertEquals("Kerstin",single_application.get("b_firstName"));
+        Assert.assertEquals("Haag",single_application.get("b_lastName"));
+
+
 
     }
 
@@ -143,6 +145,14 @@ public class POSTMortgageDetailsAPI{
 
         String token = jsonPath.getString("token");
 
+        given().
+                header("Authorization",token).
+                when().log().all().
+                get("/getmortagage.php").
+                then().log().all().
+                //assertThat().
+                        statusCode(200).
+                        body("success",equalTo(1));
 
 
          given().

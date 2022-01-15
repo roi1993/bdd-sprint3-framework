@@ -38,32 +38,31 @@ public class GETMortgageAPI {
         String token = jsonPath.getString("token");
 
         JsonPath jsonPath1 = given().
-                header("Authorization",token).
+                header("Authorization", token).
                 when().log().all().
                 get("/getmortagage.php").
                 then().log().all().
                 //assertThat().
-                statusCode(200).
-                body("success",equalTo(1)).extract().jsonPath();
+                        statusCode(200).
+                        body("success", equalTo(1)).extract().jsonPath();
 
         List<Object> mortagage_applications = jsonPath1.getList("mortagage_applications");
 
 
-        Assert.assertEquals(11,mortagage_applications.size());
-
+        Assert.assertEquals(11, mortagage_applications.size());
 
 
     }
 
     @Test
-    public void testGETMortgageAPINegativeScenario_MissingAuthorizationToken(){
+    public void testGETMortgageAPINegativeScenario_MissingAuthorizationToken() {
         baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
         JsonPath jsonPath = given().
                 header("Accept", "application/json").
                 body("{\n" +
                         "  \"email\": \"ditote3350@leanrights.com\",\n" +
                         "  \"password\": \"Janeray2021\"\n" +
-                     "}").
+                        "}").
                 when().log().all().
                 post("/login.php").
                 then().log().all().
@@ -73,13 +72,13 @@ public class GETMortgageAPI {
 
         String token = jsonPath.getString("token");
 
-                given().
+        given().
                 when().log().all().
                 get("/getmortagage.php").
                 then().log().all().
                 //assertThat().
                         statusCode(200).
-                        body("message",equalTo("Unauthorized"));
+                body("message", equalTo("Unauthorized"));
 
     }
 
@@ -102,23 +101,20 @@ public class GETMortgageAPI {
         String token = jsonPath.getString("token");
 
         JsonPath jsonPath1 = given().
-                header("Authorization",token).
+                header("Authorization", token).
                 when().log().all().
                 get("/getmortagage.php").
                 then().log().all().
                 //assertThat().
                         statusCode(200).
-                        body("success",equalTo(1)).extract().jsonPath();
+                        body("success", equalTo(1)).extract().jsonPath();
 
         List<Object> mortagage_applications = jsonPath1.getList("mortagage_applications");
 
 
-        Assert.assertEquals(297,mortagage_applications.size());
 
 
     }
-
-
 
 
     @Test
@@ -144,6 +140,4 @@ public class GETMortgageAPI {
 
 
     }
-
-
 }
