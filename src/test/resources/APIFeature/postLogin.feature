@@ -1,8 +1,6 @@
-@API
+@smokeAPI @regressionAPI
 
 Feature: Mortgage POST API Feature
-
-
   Scenario: Verify POST \login API
     Given the baseURI initialize and the header "Accept","application/json" is set
     When I set a POST request to login "/login.php" endpoint and body requirements is passed
