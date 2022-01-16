@@ -1,4 +1,4 @@
-@API
+@smokeAPI @regressionAPI
 
 Feature: Mortgage POST API Feature
 
