@@ -50,6 +50,8 @@ public class MultiLayerAPITest {
         Assert.assertEquals("Jason Mason",loginPage.userNameOnDashboard.getText());
         Driver.quitDriver();
 
+        System.out.println(email);
+
 
 
     }
