@@ -3,8 +3,10 @@ package stepDefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import pojos.User;
 
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
@@ -14,11 +16,12 @@ public class POSTLoginStepDefs {
 
     RequestSpecification requestSpecification;
     Response response;
+ //   String token;
 
 
 
-    @Given("the baseURI initialize and the header {string},{string} is set")
-    public void theBaseURIInitializeAndTheHeaderIsSet(String headerKey, String headerValue) {
+    @Given("The baseURI initialized and the header {string},{string} is set")
+    public void theBaseURIInitializedAndTheHeaderIsSet(String headerKey, String headerValue) {
         baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
         requestSpecification= given().
                 header(headerKey, headerValue);
@@ -39,10 +42,11 @@ public class POSTLoginStepDefs {
 
 
     @Then("status code should be {int}")
-    public void statusCodeShouldBe(int arg0) {
-        response.then().log().all().
+    public void statusCodeShouldBe(int code) {
+        JsonPath jsonPath = response.then().log().all().
                 assertThat().
-                statusCode(200);
+                statusCode(code).extract().jsonPath();
+      //  token =  jsonPath.getString("token");
     }
 
     /////////////////////////////////////

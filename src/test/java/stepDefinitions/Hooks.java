@@ -9,6 +9,8 @@ import utilities.Driver;
 
 import java.time.Duration;
 
+import static io.restassured.RestAssured.baseURI;
+
 public class Hooks {
 
 
@@ -16,6 +18,7 @@ public class Hooks {
     public void setupScenario(){
         Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         Driver.getDriver().manage().window().maximize();
+    //    baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
     }
     @After
     public void tearDownScenario(Scenario scenario){
