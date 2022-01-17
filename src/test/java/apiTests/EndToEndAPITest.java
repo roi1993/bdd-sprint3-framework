@@ -4,16 +4,12 @@ import com.github.javafaker.Faker;
 import io.restassured.path.json.JsonPath;
 import org.junit.Assert;
 import org.junit.Test;
-import pojos.MortgageApplication;
+import pojos.MortgageApplicationDetails;
 import utilities.DBUtility;
 
 import static io.restassured.RestAssured.*;
 
-import javax.swing.*;
 import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.baseURI;
@@ -34,7 +30,7 @@ public class EndToEndAPITest {
         //Date dateAndTime = Calendar.getInstance().getTime();
         //String dateTime = dateAndTime.toString();
 
-        MortgageApplication single_application = new MortgageApplication(id,1,"James Bond", 1,"Purchase a Home", 100000000,250000,25,
+        MortgageApplicationDetails single_application = new MortgageApplicationDetails(id,1,"James Bond", 1,"Purchase a Home", 100000000,250000,25,
                 750000,"Checking/Savings (most recent bank statement)",2,"Jennifer","Lopez",randomEmail,"12/31/1975","123456789","Married",
                 "123-456-7899","Rent",4500,"Barbara Lopez",100000,"Jennifer","Lopez",randomEmail,"2021-08-30 00:24:29",user_id,1 );
 
