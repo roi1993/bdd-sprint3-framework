@@ -118,7 +118,7 @@ public class GETMortgageStepDefs {
 
     }
 
-
+    //HamcrestMatchers Used
     @Then("I should be able to see the list of all applications with different users")
     public void iShouldBeAbleToSeeTheListOfAllApplicationsWithDifferentUsers() {
         response.then().log().all().

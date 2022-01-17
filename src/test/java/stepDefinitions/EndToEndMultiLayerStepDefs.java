@@ -34,20 +34,17 @@ public class EndToEndMultiLayerStepDefs {
     public void the_base_uri_initialized_and_header_is_set_to_to_value_of(String key, String value) {
         baseURI = "http://qa-duobank.us-east-2.elasticbeanstalk.com/api";
         requestSpecification = given().
+                header("Content-Type", "application/json").
                 header(key, value);
 
-    }
 
-    @When("I pass {string} for firstName, {string} for lastName,{string} for email, and {string} for the password to the body and send POST request to {string}")
-    public void iPassForFirstNameForLastNameForEmailAndForThePasswordToTheBodyAndSendPOSTRequestTo(String firstName, String lastName, String email, String password, String endpoint) {
+    }
+  //Serialization example
+    @When("I pass Jason for firstName, Mason for lastName,jason@gmail.com for email, and jasonMason1234# for the password to the body and send POST request to {string}")
+    public void iPassForFirstNameForLastNameForEmailAndForThePasswordToTheBodyAndSendPOSTRequestTo( String endpoint) {
         endpoint = EndPoints.REGISTER;
 
-        response = requestSpecification.body("{\n" +
-                " \"first_name\":\"" + firstName + "\",\n" +
-                " \"last_name\":\"" + lastName + "\",\n" +
-                " \"email\":\"" + email+ "\",\n" +
-                " \"password\":\"" + password + "\"\n" +
-                "}").
+        response = requestSpecification.body(user).
                 when().log().all().
                 post(endpoint);
 

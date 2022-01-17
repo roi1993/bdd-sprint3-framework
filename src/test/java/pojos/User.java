@@ -2,31 +2,31 @@ package pojos;
 
 public class User {
 
-   public String firstName;
-   public String lastName;
+   public String first_name;
+   public String last_name;
    public String email;
    public String password;
-   public String token;
+   //public String token;
 
    public User(){}
 
-   public User(String firstName, String lastName, String email, String password, String token) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.token = token;
-   }
+//   public User(String firstName, String lastName, String email, String password, String token) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.email = email;
+//        this.password = password;
+//       // this.token = token;
+//   }
+//
+//    public User(String email, String password, String token) {
+//        this.email = email;
+//        this.password = password;
+//        this.token = token;
+//    }
 
-    public User(String email, String password, String token) {
-        this.email = email;
-        this.password = password;
-        this.token = token;
-    }
-
-    public User(String firstName, String lastName, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(String first_name, String last_name, String email, String password) {
+        this.first_name = first_name;
+        this.last_name = last_name;
         this.email = email;
         this.password = password;
     }
@@ -37,19 +37,19 @@ public class User {
     }
 
     public String getFirstName() {
-        return firstName;
+        return first_name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstName(String first_name) {
+        this.first_name = first_name;
     }
 
     public String getLastName() {
-        return lastName;
+        return last_name;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.last_name = last_name;
     }
 
     public String getEmail() {
@@ -68,22 +68,21 @@ public class User {
         this.password = password;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
+//    public String getToken() {
+//        return token;
+//    }
+//
+//    public void setToken(String token) {
+//        this.token = token;
+//    }
 
     @Override
     public String toString() {
         return "User{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", token='" + token + '\'' +
                 '}';
     }
 }
